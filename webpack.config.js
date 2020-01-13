@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = (env, options) => {
     return {
-        watch: true,
-        mode: 'development',
+        watch: false,
+        mode: 'production',
         entry: {
             main: ['./src/index.js', './assets/sass/main.scss'],
         },
