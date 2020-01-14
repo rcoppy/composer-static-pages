@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700|Playfair+Display&display=swap');
 //@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+
+@import "variables";
+@import "custom";
+
 @import '~bootstrap/scss/bootstrap';
+
+
 
 /*
 @include media-breakpoint-up(xs) { ... }
@@ -10,13 +16,16 @@
 @include media-breakpoint-up(xl) { ... }
 */
 
-@import "variables";
 @import "microclearfix";
 @import "typography";
+
+@import "content_banner";
 
 @import "navbar";
 @import "gallery_card";
 @import "gallery";
+@import "composers_list";
+@import "composers_list_entry";
 
 
 body {
@@ -30,10 +39,13 @@ body {
     
     overflow-x: hidden;
     overflow-y: scroll;
+    z-index: 1;
+
+    pointer-events: none;
 }
 
 .wrapper.content {
-
+    z-index: 0;
     box-shadow: 0 0 2rem darken(cadetblue, 40%);
     min-height: 100vh - $header_height;
 
@@ -45,9 +57,14 @@ body {
     padding-bottom: $footer_height;
     padding-top: 1rem;
     //margin-top: -1rem;
+
+    pointer-events: none;
 }
 
 .container.content {
+    
+    pointer-events: auto;
+    
     padding-top: 1rem;
     padding-bottom: 1rem;
 
@@ -71,6 +88,8 @@ footer {
     background-size: cover;
     background-position-y: center;
     background-attachment: fixed;
+
+    pointer-events: auto;
 }
 
 header {
@@ -104,10 +123,12 @@ footer {
 
     @include media-breakpoint-down(md) {
         height: $mobile_footer_height;
+        // bottom: $mobile_footer_height;
     }
 
     width: 100%;
-    bottom: 0px;
+    // bottom: $footer_height;
+    bottom: 0;
 
     overflow: hidden;
 
